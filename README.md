@@ -4,7 +4,9 @@
 - django 2.0
 ## How to Use
 ### To start the project
-- python manage.py runserver 0.0.0.0:8000
+···
+python manage.py runserver 0.0.0.0:8000
+···
 Maybe you want start your website using other ports, so you can change the command.
 ### The Url
 1. http://127.0.0.1:8000/admin/
