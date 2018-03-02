@@ -7,7 +7,7 @@ from django.utils.six import python_2_unicode_compatible
 from django.utils.html import strip_tags
 
 
-import users
+
 
 
 @python_2_unicode_compatible

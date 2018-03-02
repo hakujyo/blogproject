@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView
 
 
 from .models import Post, Category
+from users.models import User
 from comments.forms import CommentForm
 
 
@@ -13,6 +14,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'index.html'
     context_object_name = 'post_list'
+    paginate_by = 5
 
 #对应的视图函数：
 # def index(request):
@@ -104,3 +106,18 @@ class CategoryView(ListView):
 #     cate = get_object_or_404(Category, pk=pk)
 #     post_list = Post.objects.filter(category=cate)
 #     return render(request, 'index.html', context={'post_list': post_list})
+
+# class AuthorView(ListView):
+#     model = Post
+#     template_name = 'index.html'
+#     context_object_name = 'post_list'
+#
+#     def get_queryset(self):
+#         auth = get_object_or_404(User, pk=self.kwargs.get('pk'))
+#         return super(CategoryView, self).get_queryset().filter(author=auth)
+
+
+def author(request, pk):
+    auth = get_object_or_404(User, pk=pk)
+    post_list = Post.objects.filter(author=auth)
+    return render(request, 'index.html', context={'post_list': post_list})
