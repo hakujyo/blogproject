@@ -13,7 +13,7 @@ from comments.forms import CommentForm
 class IndexView(ListView):
     model = Post
     template_name = 'index.html'
-    context_object_name = 'post_list'
+    context_object_name = 'post_list_a'
     paginate_by = 5
 
 #对应的视图函数：

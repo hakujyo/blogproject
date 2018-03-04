@@ -903,3 +903,25 @@ img {
 .current a {
     color: red;
 }
+
+#mybutton {
+    padding: 0px 5px;
+}
+
+.islogin{
+    margin-top: 10px;
+}
+
+.category-div{
+    border-top: 3px solid #3f3f3f;
+    margin:0 2px;
+    margin-bottom: 20px;
+}
+
+.category-title{
+    font-size: 32px;
+    border-bottom: 1px solid #3f3f3f;
+    background: #5e5e5e;
+    color: #FFFFFF;
+    padding:0 8px;
+}
