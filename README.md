@@ -7,7 +7,7 @@
 ```
 python manage.py runserver 0.0.0.0:8000
 ```
-Maybe you want to start your website using other ports, so you can change the command.
+Maybe you want to access your website using other ports, so you can change the command.
 ### The Url
 1. http://127.0.0.1:8000/admin/
 For the superuser to manage the website.
