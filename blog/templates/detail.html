@@ -91,84 +91,14 @@
             </li>
         </ul>
     </div>
-    <div class="widget widget-recent-posts">
-        <h3 class="widget-title">最新文章</h3>
-        {% get_recent_posts as recent_post_list %}
-        <ul>
-            {% for post in recent_post_list %}
-            <li>
-                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </li>
-            {% empty %}
-            暂无文章！
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="widget widget-archives">
-        {% archives as date_list %}
-        <h3 class="widget-title">归档</h3>
-        <ul>
-            {% for date in date_list %}
-            <li>
-                <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }}年{{ date.month }}月</a>
-            </li>
-            {% empty %}
-            暂无归档！
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="widget widget-category">
-        <h3 class="widget-title">分类</h3>
-        {% get_categories as category_list %}
-        <ul>
-            {% for category in category_list %}
-            <li>
-                <a href="{% url 'blog:category' category.pk %}">{{ category.name }} <span class="post-count">{{ category.num_posts }}</span></a>
-            </li>
-            {% empty %}
-            暂无分类！
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="widget widget-tag-cloud">
-        <h3 class="widget-title">标签云</h3>
-        <ul>
-            <li>
-                <a href="#">Django</a>
-            </li>
-            <li>
-                <a href="#">Python</a>
-            </li>
-            <li>
-                <a href="#">Java</a>
-            </li>
-            <li>
-                <a href="#">笔记</a>
-            </li>
-            <li>
-                <a href="#">文档</a>
-            </li>
-            <li>
-                <a href="#">AngularJS</a>
-            </li>
-            <li>
-                <a href="#">CSS</a>
-            </li>
-            <li>
-                <a href="#">JavaScript</a>
-            </li>
-            <li>
-                <a href="#">Snippet</a>
-            </li>
-            <li>
-                <a href="#">jQuery</a>
-            </li>
-        </ul>
-    </div>
-    <div class="rss">
-        <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
-    </div>
+    <!--最新文章-->
+    {% include 'asides/recent-posts.html' %}
+    <!--归档-->
+    {% include 'asides/archives.html' %}
+    <!--分类-->
+    {% include 'asides/category.html' %}
+    <!--标签云-->
+    {% include 'asides/tag-cloud.html' %}
+    <!--RS-->
+    {% include 'asides/rss.html' %}
 {% endblock aside %}

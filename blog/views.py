@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 
-from .models import Post, Category
+from .models import Post, Category, Tag
 from users.models import User
 from comments.forms import CommentForm
 
@@ -121,3 +121,13 @@ def author(request, pk):
     auth = get_object_or_404(User, pk=pk)
     post_list = Post.objects.filter(author=auth)
     return render(request, 'index.html', context={'post_list': post_list})
+
+
+class TagView(ListView):
+    model = Post
+    template_name = 'index.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
+        return super(TagView, self).get_queryset().filter(tags=tag)
