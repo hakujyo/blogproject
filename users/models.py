@@ -7,9 +7,11 @@ import blog
 @python_2_unicode_compatible
 class User(AbstractUser):
     nickname = models.CharField(max_length=50, blank=True)
+    friends = models.ManyToManyField('self')
 
     def get_absolute_url(self):
         return reverse('blog:author', kwargs={'pk': self.pk})
 
     class Meta(AbstractUser.Meta):
         pass
+
