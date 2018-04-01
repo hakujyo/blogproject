@@ -96,13 +96,13 @@ class ArchivesView(ListView):
 
 class CategoryView(ListView):
     model = Post
-    template_name = 'index.html'
+    template_name = 'blog_filter.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate)
-    
+
 # def category(request, pk):
 #     cate = get_object_or_404(Category, pk=pk)
 #     post_list = Post.objects.filter(category=cate)
@@ -121,7 +121,7 @@ class CategoryView(ListView):
 def author(request, pk):
     auth = get_object_or_404(User, pk=pk)
     post_list = Post.objects.filter(author=auth)
-    return render(request, 'index.html', context={'post_list': post_list})
+    return render(request, 'blog_filter.html', context={'post_list': post_list})
 
 
 class TagView(ListView):
