@@ -78,7 +78,7 @@ class PostDetailView(DetailView):
 
 class ArchivesView(ListView):
     model = Post
-    template_name = 'index.html'
+    template_name = 'blog_filter.html'
     context_object_name = 'post_list'
     def get_queryset(self):
         year = self.kwargs.get('year')
@@ -126,7 +126,7 @@ def author(request, pk):
 
 class TagView(ListView):
     model = Post
-    template_name = 'index.html'
+    template_name = 'blog_filter.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
