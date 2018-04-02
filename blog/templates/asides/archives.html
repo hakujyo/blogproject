@@ -3,16 +3,18 @@
 
 {% block archives%}
     <div class="widget widget-archives">
-        {% archives as date_list %}
-        <h3 class="widget-title">归档</h3>
-        <ul>
-            {% for date in date_list %}
-            <li>
-                <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }}年{{ date.month }}月</a>
-            </li>
-            {% empty %}
-            暂无归档！
-            {% endfor %}
-        </ul>
+        <div class="widget-title"><h3 >归档</h3></div>
+        <div class="widget-content">
+            {% archives as date_list %}
+            <ul>
+                {% for date in date_list %}
+                <li>
+                    <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }}年{{ date.month }}月</a>
+                </li>
+                {% empty %}
+                暂无归档！
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock archives %}
