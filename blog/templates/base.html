@@ -65,21 +65,6 @@
             <aside class="col-md-4">
                 {% block aside %}
                 {% endblock aside %}
-                    {% if user.is_authenticated %}
-                        <div class="widget widget-interest">
-                            <h3 class="widget-title">你可能感兴趣</h3>
-{#                            {% get_recent_posts as recent_post_list %}#}
-{#                            <ul>#}
-{#                                {% for post in recent_post_list %}#}
-{#                                <li>#}
-{#                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>#}
-{#                                </li>#}
-{#                                {% empty %}#}
-{#                                暂无文章！#}
-{#                                {% endfor %}#}
-                            </ul>
-                        </div>
-                    {% endif %}
             </aside>
         </div>
     </div>

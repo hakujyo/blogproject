@@ -35,3 +35,7 @@ def get_users():
 @register.simple_tag
 def get_tags():
     return Tag.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
+
+@register.simple_tag
+def get_interesting_users():
+    return User.objects.all()

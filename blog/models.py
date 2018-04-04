@@ -7,9 +7,6 @@ from django.utils.six import python_2_unicode_compatible
 from django.utils.html import strip_tags
 
 
-
-
-
 @python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField(max_length=100)

@@ -61,4 +61,8 @@
     {% include 'asides/category.html' %}
     <!--最新用户-->
     {% include 'asides/recent-users.html' %}
+    <!--你可能感兴趣-->
+    {% if user.is_authenticated %}
+            {% include 'asides/may-interest.html' %}
+    {% endif %}
 {% endblock aside %}

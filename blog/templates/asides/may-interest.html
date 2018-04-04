@@ -1,0 +1,20 @@
+{% load staticfiles %}
+{% load blog_tags %}
+
+{% block category%}
+    <div class="widget widget-category">
+        <div class="widget-title"><h5 >你可能感兴趣</h5></div>
+        <div class="widget-content">
+            {% get_interesting_users as user_list %}
+            <ul>
+                {% for user in user_list %}
+                <li>
+                    <a href="{{ user.get_absolute_url }}">{{ user }}</a>
+                </li>
+                {% empty %}
+                暂无分类！
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock category %}
