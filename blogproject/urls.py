@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'', include('comments.urls')),
     url(r'', include('users.urls')),
     url(r'^users/', include('django.contrib.auth.urls')),
+    url(r'^likes/', include('likes.urls')),
 ]
