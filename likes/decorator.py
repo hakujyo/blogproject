@@ -6,7 +6,7 @@ import json
 def check_login(func):
     u"""检查是否登录用户"""
     def warpper(request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             #若有登录，则继续执行方法
             return func(request)
         else:
@@ -26,7 +26,7 @@ def check_request(*params):
             for param in params:
                 #print param
                 #判断参数是否存在
-                if not request.GET.has_key(param):
+                if not request.GET.__contains__(param):
                     data = {}
                     data['status'] = 402
                     data['message'] = u'no params:%s' % param
