@@ -46,9 +46,8 @@
                     praise_txt.text(num);
                     $.get("/likes/likes_change?type=post&id={{post.id}}&direct=-1",
                          function(data,status){
-                            alert("取消点赞");
+{#                            alert("取消点赞");#}
                           });
-
                 }else{
                     $(this).html("<img src='{% static 'blog/pic/yizan.png' %}' id='praise-img' class='animation' />");
                     praise_txt.addClass("hover");
@@ -58,7 +57,7 @@
                     praise_txt.text(num);
                     $.get("/likes/likes_change?type=post&id={{post.id}}&direct=1",
                          function(data,status){
-                            alert("点赞成功");
+{#                            alert("点赞成功");#}
                           });
                 }
             });
