@@ -16,7 +16,6 @@
           <span class="post-author"><a href="#">{{ post.author }}</a></span>
           <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
           <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
-{#            <a href="{% url "likes:likes_change" type='post' id=1 direct=1%}">dianzan</a>#}
 
         </div>
       </header>
@@ -26,8 +25,17 @@
     </article>
 
     <div class="praise">
-        <span id="praise"><img src="../../static/blog/pic/zan.png" id="praise-img" /></span>
-        <span id="praise-txt">1455</span>
+        {% if user.is_authenticated %}
+            {%is_like post.id user as is_like_result %}
+            {% if is_like_result %}
+                <span id="praise"><img src="{% static 'blog/pic/yizan.png' %}" id="praise-img" /></span>
+            {% else %}
+                <span id="praise"><img src="{% static 'blog/pic/zan.png' %}" id="praise-img" /></span>
+            {% endif %}
+        {% else %}
+            <span id="praise"><img src="{% static 'blog/pic/zan.png' %}" id="praise-img" /></span>
+        {% endif %}
+        <span id="praise-txt">{% get_likes_num  post.id %}</span>
         <span id="add-num"><em>+1</em></span>
     </div>
     <script>
@@ -38,26 +46,40 @@
                 var praise_txt = $("#praise-txt");
                 var num=parseInt(praise_txt.text());
                 if(praise_img.attr("src") == ("{% static 'blog/pic/yizan.png' %}")){
-                    $(this).html("<img src='{% static 'blog/pic/zan.png' %}' id='praise-img' class='animation' />");
-                    praise_txt.removeClass("hover");
-                    text_box.show().html("<em class='add-animation'>-1</em>");
-                    $(".add-animation").removeClass("hover");
-                    num--;
-                    praise_txt.text(num);
                     $.get("/likes/likes_change?type=post&id={{post.id}}&direct=-1",
                          function(data,status){
-{#                            alert("取消点赞");#}
+                            if(data['status']==200){
+                                $("#praise").html("<img src='{% static 'blog/pic/zan.png' %}' id='praise-img' class='animation' />");
+                                praise_txt.removeClass("hover");
+                                text_box.show().html("<em class='add-animation'>-1</em>");
+                                $(".add-animation").removeClass("hover");
+                                num--;
+                                praise_txt.text(num);
+                            }
+                             else if(data['status']==401){
+                                alert("请先登录！");
+                            }
+                            else {
+                                alert("已取消点赞！");
+                            }
                           });
                 }else{
-                    $(this).html("<img src='{% static 'blog/pic/yizan.png' %}' id='praise-img' class='animation' />");
-                    praise_txt.addClass("hover");
-                    text_box.show().html("<em class='add-animation'>+1</em>");
-                    $(".add-animation").addClass("hover");
-                    num++;
-                    praise_txt.text(num);
                     $.get("/likes/likes_change?type=post&id={{post.id}}&direct=1",
                          function(data,status){
-{#                            alert("点赞成功");#}
+                            if(data['status']==200){
+                                $("#praise").html("<img src='{% static 'blog/pic/yizan.png' %}' id='praise-img' class='animation' />");
+                                praise_txt.addClass("hover");
+                                text_box.show().html("<em class='add-animation'>+1</em>");
+                                $(".add-animation").addClass("hover");
+                                num++;
+                                praise_txt.text(num);
+                            }
+                            else if(data['status']==401){
+                                alert("请先登录！");
+                            }
+                            else {
+                                alert("已点赞！");
+                             }
                           });
                 }
             });

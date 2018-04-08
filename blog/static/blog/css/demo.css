@@ -48,6 +48,7 @@ body{
     margin:0 auto;
 }
 #praise-txt{
+    color: #fff;
     height:25px;
     line-height:25px;
     display: block;
