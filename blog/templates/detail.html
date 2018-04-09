@@ -93,11 +93,11 @@
             <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
                 {% csrf_token %}
                 <div class="row">
-                    <div class="col-md-4">
-                        <label>名字：</label>
-                        {{ form.name }}
-                        {{ form.name.errors }}
-                    </div>
+                    <!--<div class="col-md-4">-->
+                        <!--<label>名字：</label>-->
+                        <!--{{ form.name }}-->
+                        <!--{{ form.name.errors }}-->
+                    <!--</div>-->
                     <div class="col-md-12">
                         <label>评论：</label>
                         {{ form.text }}
