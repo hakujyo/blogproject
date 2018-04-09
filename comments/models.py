@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
-
+from django.conf import settings
 
 @python_2_unicode_compatible
 class Comment(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
     email = models.EmailField(max_length=255)
     url = models.URLField(blank=True)
     text = models.TextField()

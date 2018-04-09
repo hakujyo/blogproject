@@ -93,22 +93,22 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-4">
-                    <label for="{{ form.name.id_for_label }}">名字：</label>
+                    <label>名字：</label>
                     {{ form.name }}
                     {{ form.name.errors }}
                 </div>
                 <div class="col-md-4">
-                    <label for="{{ form.email.id_for_label }}">邮箱：</label>
+                    <label>邮箱：</label>
                     {{ form.email }}
                     {{ form.email.errors }}
                 </div>
                 <div class="col-md-4">
-                    <label for="{{ form.url.id_for_label }}">URL：</label>
+                    <label>URL：</label>
                     {{ form.url }}
                     {{ form.url.errors }}
                 </div>
                 <div class="col-md-12">
-                    <label for="{{ form.text.id_for_label }}">评论：</label>
+                    <label>评论：</label>
                     {{ form.text }}
                     {{ form.text.errors }}
                     <button type="submit" class="comment-btn">发表</button>
