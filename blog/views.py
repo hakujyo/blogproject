@@ -121,7 +121,7 @@ class CategoryView(ListView):
 def author(request, pk):
     auth = get_object_or_404(User, pk=pk)
     post_list = Post.objects.filter(author=auth)
-    return render(request, 'blog_filter.html', context={'post_list': post_list})
+    return render(request, 'user-blog.html', context={'post_list': post_list})
 
 
 class TagView(ListView):

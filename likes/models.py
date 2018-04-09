@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-#from django.contrib.contenttypes import generic
+from django.conf import settings
 from users.models import User
 
 #likes number model
@@ -20,7 +20,7 @@ class Likes(models.Model):
 #likes detail recode
 class LikesDetail(models.Model):
     likes = models.ForeignKey(Likes, on_delete=models.CASCADE,)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
     is_like = models.BooleanField(default = False)
     pub_date = models.DateTimeField(auto_now = True)
 
