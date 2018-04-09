@@ -10,6 +10,7 @@ def post_comment(request, post_pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
+            # commit=False 的作用是仅仅利用表单的数据生成 Comment 模型类的实例，但还不保存评论数据到数据库。
             comment = form.save(commit=False)
             comment.name = request.user
             comment.post = post
