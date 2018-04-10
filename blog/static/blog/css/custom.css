@@ -353,6 +353,7 @@ img {
 
 .widget-content{
     background: #5251575e;
+    color: #fff;
 }
 
 .widget-recent-posts ul {
@@ -936,4 +937,8 @@ img {
     color: #FFFFFF;
     padding: 0 8px;
     margin-bottom: 3px;
+}
+
+.name_and_image{
+    text-align: center;
 }

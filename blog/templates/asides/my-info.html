@@ -5,7 +5,18 @@
     <div class="widget widget-recent-posts">
         <div class="widget-title"><h5 >个人信息</h5></div>
         <div class="widget-content">
-
+            <div class="name_and_image">
+                <img src="{{author.image}}" width="200px">
+                <h3>{{author.username}}</h3>
+            </div>
+            <ul>
+                <li>年龄：{{author.age}}</li>
+                <li>性别：{{author.sex}}</li>
+                <li>爱好：{{author.hobbies}}</li>
+                <li>学历：{{author.education}}</li>
+                <li>学校：{{author.school}}</li>
+                <li>个人介绍：{{author.introduction}}</li>
+            </ul>
         </div>
     </div>
 {% endblock recent-posts %}

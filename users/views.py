@@ -1,5 +1,14 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import RegisterForm
+from django.views.generic import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+import time
+from PIL import Image
+
+from .models import User
+from .forms import UploadImageForm
 
 def register(request):
     redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -29,3 +38,12 @@ def register(request):
 
 def index(request):
     return render(request, 'welcome.html')
+
+
+class UploadImageView(LoginRequiredMixin, View):
+    def post(self, request):
+        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            return HttpResponse("{'status':'success'}", content_type='application/json')
+

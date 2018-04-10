@@ -23,7 +23,6 @@ class IndexView(ListView):
 
 
 class PostDetailView(DetailView):
-    # 这些属性的含义和 ListView 是一样的
     model = Post
     template_name = 'detail.html'
     context_object_name = 'post'
@@ -121,7 +120,7 @@ class CategoryView(ListView):
 def author(request, pk):
     auth = get_object_or_404(User, pk=pk)
     post_list = Post.objects.filter(author=auth)
-    return render(request, 'user-blog.html', context={'post_list': post_list})
+    return render(request, 'user-blog.html', context={'post_list': post_list, 'author':auth})
 
 
 class TagView(ListView):

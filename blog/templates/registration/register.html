@@ -20,6 +20,21 @@
                 <h3>注册</h3>
                 <form class="form" action="{% url 'users:register' %}" method="post">
                     {% csrf_token %}
+                    <!--<label for="id_username">用户名：</label>-->
+                    <!--{{ form.username }}-->
+                    <!--{{ form.username.errors }}-->
+                    <!--<label for="id_email">E-mail：</label>-->
+                    <!--{{ form.email }}-->
+                    <!--{{ form.email.errors }}-->
+                    <!--<label for="id_age">年龄：</label>-->
+                    <!--{{ form.age }}-->
+                    <!--{{ form.age.errors }}-->
+                    <!--<label for="id_username">性别：</label>-->
+                    <!--{{ form.username }}-->
+                    <!--{{ form.username.errors }}-->
+                    <!--<label for="id_username">用户名：</label>-->
+                    <!--{{ form.username }}-->
+                    <!--{{ form.username.errors }}-->
                     {% for field in form %}
                         {{ field.label_tag }}
                         {{ field }}
