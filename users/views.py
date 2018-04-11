@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .forms import RegisterForm
 from django.views.generic import View
@@ -8,7 +8,8 @@ import time
 from PIL import Image
 
 from .models import User
-from .forms import UploadImageForm
+from blog.models import Post
+from .forms import UploadImageForm, AddFriendForm
 
 def register(request):
     redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -47,3 +48,21 @@ class UploadImageView(LoginRequiredMixin, View):
             image_form.save()
             return HttpResponse("{'status':'success'}", content_type='application/json')
 
+
+def add_friend(request, pk):
+    user = get_object_or_404(User, username=request.user)
+    author = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        form = AddFriendForm(request.POST)
+        if form.is_valid():
+            user.friends.add(author)
+            return redirect(author)
+        else:
+            # 使用 post.comment_set.all() 反向查询全部评论。
+            post_list = Post.objects.filter(author=author)
+            context = {'post_list': post_list,
+                       'author':author,
+                       }
+            return render(request, 'user-blog.html', context=context)
+    # 不是 post 请求，说明用户没有提交数据，重定向到文章详情页。
+    return redirect(author)

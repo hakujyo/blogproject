@@ -25,6 +25,17 @@ class RegisterForm(UserCreationForm):
             user.save()
         return user
 
+class AddFriendForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = []
+
+
+class DeleteFriendForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = []
+
 # class AddInfoForm(UserCreationForm):
 #     class Meta(forms.Form):
 #         age = forms.PositiveIntegerField(null=True, blank=True)

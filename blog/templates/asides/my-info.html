@@ -17,6 +17,12 @@
                 <li>学校：{{author.school}}</li>
                 <li>个人介绍：{{author.introduction}}</li>
             </ul>
+            {% if user.is_authenticated %}
+                <form action="{% url 'users:add_friend' author.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">关注</button>
+                </form>
+            {% endif %}
         </div>
     </div>
 {% endblock recent-posts %}
