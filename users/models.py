@@ -17,7 +17,7 @@ class User(AbstractUser):
     birth = models.DateField('生日', blank=True, null=True)
     sex = models.IntegerField('性别', choices=CHOICE_GENDER, blank=True, null=True)
     hobbies = models.CharField('爱好', max_length=100, blank=True, null=True)
-    education = models.IntegerField('学历',choices=CHOICE_EDU, blank=True, null=True)
+    education = models.IntegerField('学历', choices=CHOICE_EDU, blank=True, null=True)
     school = models.CharField('学校', max_length=20, blank=True, null=True)
     introduction = models.CharField('个人简介', max_length=200, blank=True, null=True)
 

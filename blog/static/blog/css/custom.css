@@ -942,3 +942,17 @@ img {
 .name_and_image{
     text-align: center;
 }
+
+.add-friend{
+    text-align: center;
+    padding-bottom: 14px;
+}
+
+.friend_button{
+color: #fff;
+    background: #192e41;
+    border: 1px solid #434040;
+    border-radius: 11px;
+    padding: 2px 73px;
+    box-shadow: 2px 2px 5px #888888;
+}
