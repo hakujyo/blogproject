@@ -38,7 +38,7 @@ def register(request):
     return render(request, 'registration/register.html', context={'form': form})
 
 def index(request):
-    return render(request, 'welcome.html')
+    return render(request, 'index.html')
 
 
 class UploadImageView(LoginRequiredMixin, View):

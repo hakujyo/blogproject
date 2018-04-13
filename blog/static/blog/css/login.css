@@ -1,0 +1,11 @@
+.login_class{
+    background: url(../../blog/pic/login_bgx.gif);
+}
+
+.container{
+    max-width: 50rem;
+    background: #ffffff61;
+    box-shadow: 2px 1px 12px #86888a;
+    margin-top: 100px;
+    padding-bottom: 100px;
+}
