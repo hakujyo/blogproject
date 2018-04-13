@@ -1,13 +1,15 @@
 {% load staticfiles %}
 {% load blog_tags %}
 {% load friend_tags %}
+{% load user_tags %}
 
 {% block recent-posts%}
+
     <div class="widget widget-recent-posts">
         <div class="widget-title"><h5 >个人信息</h5></div>
         <div class="widget-content">
             <div class="name_and_image">
-                <img src="{{author.image}}" width="200px">
+                <img class="portrait" src="{{author.image}}" width="200px">
                 <h3>{{author.username}}</h3>
             </div>
             <ul>
@@ -15,13 +17,13 @@
                     <li>年龄：{{author.age}}</li>
                 {% endif %}
                 {% if author.sex %}
-                    <li>性别：{{author.sex}}</li>
+                    <li>性别：{% get_gender author %}</li>
                 {% endif %}
                 {% if author.hobbies %}
                     <li>爱好：{{author.hobbies}}</li>
                 {% endif %}
                 {% if author.education %}
-                    <li>学历：{{author.education}}</li>
+                    <li>学历：{% get_edu author %}</li>
                 {% endif %}
                 {% if author.school %}
                     <li>学校：{{author.school}}</li>

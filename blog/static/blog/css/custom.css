@@ -943,6 +943,12 @@ img {
     text-align: center;
 }
 
+.portrait{
+    border: 1px solid #434040;
+    border-radius: 100%;
+    box-shadow: 2px 2px 5px #888888;
+}
+
 .add-friend{
     text-align: center;
     padding-bottom: 14px;
