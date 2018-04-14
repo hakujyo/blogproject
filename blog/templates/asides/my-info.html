@@ -34,18 +34,20 @@
             </ul>
             <div class="add-friend">
                 {% if user.is_authenticated %}
-                    {% is_friend user.username author as is_friend_result %}
-                    {% if is_friend_result %}
-                        <form action="{% url 'users:delete_friend' author.pk %}" method="post">
-                            {% csrf_token %}
-                            <button class="friend_button" type="submit">取消关注</button>
-                        </form>
-                    {% else %}
-                        <form action="{% url 'users:add_friend' author.pk %}" method="post">
-                            {% csrf_token %}
-                            <button class="friend_button" type="submit">关注</button>
-                        </form>
-                    {% endif %}
+                    {% ifnotequal user.pk author.pk %}
+                        {% is_friend user.username author as is_friend_result %}
+                        {% if is_friend_result %}
+                            <form action="{% url 'users:delete_friend' author.pk %}" method="post">
+                                {% csrf_token %}
+                                <button class="friend_button" type="submit">取消关注</button>
+                            </form>
+                        {% else %}
+                            <form action="{% url 'users:add_friend' author.pk %}" method="post">
+                                {% csrf_token %}
+                                <button class="friend_button" type="submit">关注</button>
+                            </form>
+                        {% endif %}
+                    {% endifnotequal %}
                 {% endif %}
             </div>
 

@@ -16,3 +16,7 @@ def is_friend(user, author):
     except Exception as e:
         return False
     return True
+
+@register.simple_tag
+def get_hot_users():
+    pass

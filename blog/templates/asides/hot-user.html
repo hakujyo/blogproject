@@ -1,0 +1,21 @@
+{% load staticfiles %}
+{% load blog_tags %}
+{% load friend_tags %}
+
+{% block recent-user%}
+    <div class="widget widget-recent-users">
+        <div class="widget-title"><h5 >热门用户</h5></div>
+        <div class="widget-content">
+            {% get_users as user_list %}
+            <ul>
+                {% for user in user_list %}
+                <li>
+                    <a href="{{ user.get_absolute_url }}">{{ user }}</a>
+                </li>
+                {% empty %}
+                暂无分类！
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock recent-user %}
