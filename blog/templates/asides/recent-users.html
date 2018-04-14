@@ -1,11 +1,12 @@
 {% load staticfiles %}
 {% load blog_tags %}
+{% load user_tags %}
 
 {% block recent-user%}
     <div class="widget widget-recent-users">
         <div class="widget-title"><h5 >最新用户</h5></div>
         <div class="widget-content">
-            {% get_users as user_list %}
+            {% get_recent_users as user_list %}
             <ul>
                 {% for user in user_list %}
                 <li>

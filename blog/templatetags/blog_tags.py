@@ -28,15 +28,9 @@ def archives():
 def get_categories():
     return Category.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
 
-
 @register.simple_tag
 def get_post_of_category(cate):
     return Post.objects.filter(category=cate)
-
-
-@register.simple_tag
-def get_users():
-    return User.objects.all()
 
 @register.simple_tag
 def get_tags():
