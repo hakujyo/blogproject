@@ -36,6 +36,7 @@ def likes_change(request):
     except Exception as e:
         #没有获取到对象，则新增一个Likes对象
         l = Likes(content_type = c, object_id = obj_id)
+        l.save()
     data['nums'] = l.likes_num
 
     #获取Likes明细对象
@@ -43,7 +44,7 @@ def likes_change(request):
         detail = LikesDetail.objects.get(likes = l, user = user)
     except Exception as e:
         detail = LikesDetail(likes = l, user = user, is_like = False)
-    liked = 1 if detail.is_like else -1
+    liked = detail.is_like
 
     #判断是否赞过，或者取消赞
     if liked == direct:

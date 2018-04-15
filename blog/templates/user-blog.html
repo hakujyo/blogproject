@@ -56,6 +56,10 @@
     {% include 'asides/recent-posts.html' %}
     <!--分类-->
     {% include 'asides/category.html' %}
-    <!--最新用户-->
-    {% include 'asides/recent-users.html' %}
+    {% if user.is_authenticated %}
+        {% ifequal user.pk author.pk %}
+            <!--你可能感兴趣-->
+            {% include 'asides/may-interest.html' %}
+        {% endifequal %}
+    {% endif %}
 {% endblock aside %}

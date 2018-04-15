@@ -10,6 +10,38 @@ register = template.Library()
 from likes.decorator import check_login, check_request
 
 @register.simple_tag
+def get_likes_num(id):
+    obj_type = "post"
+    obj_id = id
+    c = ContentType.objects.get(model=obj_type)
+    try:
+        l = Likes.objects.get(content_type = c, object_id = obj_id)
+    except Exception as e:
+        #没有获取到对象，则新增一个Likes对象
+        l = Likes(content_type = c, object_id = obj_id)
+    likes_num = l.likes_num
+    return likes_num
+
+@check_login
+@register.simple_tag
+def is_like(id, user):
+    obj_type = "post"
+    obj_id = id
+    c = ContentType.objects.get(model=obj_type)
+    try:
+        l = Likes.objects.get(content_type = c, object_id = obj_id)
+    except Exception as e:
+        #没有获取到对象，则新增一个Likes对象
+        return False
+        # l = Likes(content_type = c, object_id = obj_id)
+    try:
+        detail = LikesDetail.objects.get(likes = l, user = user)
+    except Exception as e:
+        return False
+        # detail = LikesDetail(likes = l, user = user, is_like = False)
+    return detail.is_like
+
+@register.simple_tag
 def is_friend(user, author):
     try:
         user_friend = User.objects.get(username=user, friends__exact=author)
