@@ -28,3 +28,10 @@ def get_gender(author):
 @register.simple_tag
 def get_edu(author):
     return CHOICE_EDU[author.education]
+
+@register.simple_tag
+def get_hobbies(user):
+    hobbies = []
+    for hobby in user.hobbies.all():
+        hobbies.append(hobby)
+    return hobbies

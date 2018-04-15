@@ -349,11 +349,13 @@ img {
     background: #030319bd;
     color: #fff;
     padding: 10px 0 1px 10px;
+    width: 100%;
 }
 
 .widget-content{
     background: #5251575e;
     color: #fff;
+    margin-bottom: 12px;
 }
 
 .widget-recent-posts ul {
@@ -447,6 +449,7 @@ img {
 
 .widget-content ul li {
     margin-bottom: 10px;
+    list-style-type:none
 }
 
 .widget-content ul li a{
@@ -963,3 +966,34 @@ color: #fff;
     box-shadow: 2px 2px 5px #888888;
 }
 
+.widget-div{
+    width: 100%;
+    float: left;
+}
+
+.portrait-div{
+    float: left;
+    margin-right: 7px;
+}
+
+.user-content{
+    height:250px;
+    display: block;
+}
+
+.portrait-ul{
+    padding-left: 0;
+}
+
+.portrait-li{
+    list-style-type:none;
+}
+
+.recommand-portrait{
+    width: 100px;
+    display:block;
+}
+
+.portrait-username{
+    text-align: center;
+}

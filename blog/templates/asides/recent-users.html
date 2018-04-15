@@ -3,14 +3,17 @@
 {% load user_tags %}
 
 {% block recent-user%}
-    <div class="widget widget-recent-users">
+    <div class="widget-div">
         <div class="widget-title"><h5 >最新用户</h5></div>
-        <div class="widget-content">
+        <div class="widget-content user-content">
             {% get_recent_users as user_list %}
-            <ul>
+            <ul class="portrait-ul">
                 {% for user in user_list %}
                 <li>
-                    <a href="{{ user.get_absolute_url }}">{{ user }}</a>
+                    <div class="portrait-div">
+                        <img class="recommand-portrait" src="{{user.image}}">
+                        <p class="portrait-username"><a href="{{ user.get_absolute_url }}">{{ user }}</a></p>
+                    </div>
                 </li>
                 {% empty %}
                 暂无分类！

@@ -19,8 +19,13 @@
                 {% if author.sex %}
                     <li>性别：{% get_gender author %}</li>
                 {% endif %}
-                {% if author.hobbies %}
-                    <li>爱好：{{author.hobbies}}</li>
+                {% get_hobbies author as hobbies_list%}
+                {% if hobbies_list %}
+                    <li>爱好：
+                        {% for hobby in hobbies_list %}
+                            {{hobby}}
+                        {% endfor %}
+                    </li>
                 {% endif %}
                 {% if author.education %}
                     <li>学历：{% get_edu author %}</li>
