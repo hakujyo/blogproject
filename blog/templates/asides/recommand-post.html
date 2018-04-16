@@ -1,13 +1,14 @@
 {% load staticfiles %}
 {% load blog_tags %}
+{% load recommand_tags %}
 
 {% block recent-posts%}
     <div class="widget widget-recent-posts">
         <div class="widget-title"><h5 >推荐文章</h5></div>
         <div class="widget-content">
-            {% get_recent_posts as recent_post_list %}
+            {% get_recommand_posts post as post_list %}
             <ul>
-                {% for post in recent_post_list %}
+                {% for post in post_list %}
                 <li>
                     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                 </li>

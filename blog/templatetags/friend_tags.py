@@ -54,7 +54,7 @@ def get_hot_users():
     pass
 
 @register.simple_tag
-def get_similarity(userA, userB):
+def get_similarity_of_user(userA, userB):
     dot_product = 0
     hobbyA_Value = 0
     # print(userA.hobbies.all())
@@ -77,26 +77,23 @@ def get_similarity(userA, userB):
 
 @register.simple_tag
 def get_recommand_users(user):
-    # tags=Tag.objects.all()
     users = User.objects.all()
     user_tuples=[]
     for userB in users:
         print(userB)
         if user != userB:
-            print(userB)
             if not is_friend(user, userB):
-                print(userB)
-                temp = get_similarity(user, userB)
+                temp = get_similarity_of_user(user, userB)
                 user_tuples.append(temp)
     sorted(user_tuples, key=lambda x:x[2], reverse=True)
-    recommand_users=[]
+    recommand_users = []
     for user_tuple in user_tuples[:6]:
         recommand_users.append(user_tuple[1])
     return recommand_users
 
 @register.simple_tag
 def get_friends(user):
-    friends=[]
+    friends = []
     users = User.objects.all()
     for man in users:
         if man != user and is_friend(user, man):

@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load blog_tags %}
 {% load friend_tags %}
+{% load recommand_tags %}
 
 {% block main %}
     <article class="post post-{{ post.pk }}">
@@ -134,6 +135,8 @@
     <!--{% include 'asides/category.html' %}-->
     <!--标签-->
     {% include 'asides/tag.html' %}
+    <!--推荐阅读-->
+    {% include 'asides/recommand-post.html' %}
     <!--&lt;!&ndash;RSS&ndash;&gt;-->
     <!--{% include 'asides/rss.html' %}-->
 {% endblock aside %}
