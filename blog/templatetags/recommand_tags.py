@@ -1,10 +1,6 @@
 from django import template
-from django.db.models.aggregates import Count
-from django.contrib.contenttypes.models import ContentType
 import math
 from ..models import Post, Category, Tag
-from users.models import User
-from likes.models import Likes, LikesDetail
 
 register = template.Library()
 

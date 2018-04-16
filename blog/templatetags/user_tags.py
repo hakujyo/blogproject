@@ -18,7 +18,7 @@ def get_users():
     return User.objects.all()
 
 @register.simple_tag
-def get_recent_users(num=5):
+def get_recent_users(num=6):
     return User.objects.all().order_by('-id')[:num]
 
 @register.simple_tag
