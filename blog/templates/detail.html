@@ -112,7 +112,7 @@
                 {% for comment in comment_list %}
                 <li class="comment-item">
                     <img class="recommand-portrait col-md-1" src="{{comment.name.image}}">
-                    <span class="nickname">{{ comment.name }}</span>
+                    <span class="nickname"><a href="{{ comment.name.get_absolute_url }}">{{ comment.name }}</a></span>
                     <time class="submit-date">{{ comment.created_time }}</time>
                     <div class="text">
                         {{ comment.text }}
