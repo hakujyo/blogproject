@@ -52,12 +52,14 @@
 {% block aside %}
     <!--个人信息-->
     {% include 'asides/my-info.html' %}
-    <!--最新文章-->
-    {% include 'asides/recent-posts.html' %}
-    <!--分类-->
-    {% include 'asides/category.html' %}
+    <!--&lt;!&ndash;最新文章&ndash;&gt;-->
+    <!--{% include 'asides/recent-posts.html' %}-->
+    <!--&lt;!&ndash;分类&ndash;&gt;-->
+    <!--{% include 'asides/category.html' %}-->
     {% if user.is_authenticated %}
         {% ifequal user.pk author.pk %}
+            <!--我的关注-->
+            {% include 'asides/my-friends.html' %}
             <!--你可能感兴趣-->
             {% include 'asides/may-interest.html' %}
         {% endifequal %}

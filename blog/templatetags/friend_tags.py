@@ -93,3 +93,12 @@ def get_recommand_users(user):
     for user_tuple in user_tuples[:6]:
         recommand_users.append(user_tuple[1])
     return recommand_users
+
+@register.simple_tag
+def get_friends(user):
+    friends=[]
+    users = User.objects.all()
+    for man in users:
+        if man != user and is_friend(user, man):
+            friends.append(man)
+    return friends

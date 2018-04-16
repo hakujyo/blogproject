@@ -716,6 +716,7 @@ img {
     line-height: 20px !important;
     min-height: 183px;
     transition: 0.4s border-color linear;
+    color: #000;
 }
 
 .contact-form input:focus, .comment-form input:focus,
@@ -856,6 +857,7 @@ img {
  */
 .comment-area {
     padding: 0 30px 0;
+    color: #fff;
 }
 
 .comment-form {
@@ -867,6 +869,7 @@ img {
     border: 1px solid #aaa;
     font-size: 16px;
     padding: 5px 10px;
+    color: #0b0b1d;
 }
 
 .comment-list-panel {
@@ -1000,4 +1003,17 @@ color: #fff;
 
 .no-post{
     color: #fff;
+}
+
+.tag-content{
+    height: 100px;
+}
+
+.tag-li{
+    float: left;
+    margin-right: 13px;
+}
+
+.no-content{
+    margin-left: 9px;
 }

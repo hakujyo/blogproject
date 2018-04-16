@@ -14,7 +14,7 @@
                   <time class="entry-date" datetime="{{ post.created_time }}">{{ post.created_time }}</time>
               </a>
           </span>
-          <span class="post-author"><a href="#">{{ post.author }}</a></span>
+          <span class="post-author"><a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a></span>
           <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
           <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
 
@@ -89,7 +89,7 @@
 
     <section class="comment-area" id="comment-area">
         <hr>
-        <h3>发表评论</h3>
+        <h5>发表评论</h5>
         {% if user.is_authenticated %}
             <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
                 {% csrf_token %}
@@ -103,13 +103,14 @@
                 </div>    <!-- row -->
             </form>
         {% else %}
-            <h4>请先登录！</h4>
+            <h5>请先登录！</h5>
         {% endif %}
         <div class="comment-list-panel">
-            <h3>评论列表，共 <span>{{ post.comment_set.count }}</span> 条评论</h3>
+            <h5>评论列表，共 <span>{{ post.comment_set.count }}</span> 条评论</h5>
             <ul class="comment-list list-unstyled">
                 {% for comment in comment_list %}
                 <li class="comment-item">
+                    <img class="recommand-portrait col-md-1" src="{{comment.name.image}}">
                     <span class="nickname">{{ comment.name }}</span>
                     <time class="submit-date">{{ comment.created_time }}</time>
                     <div class="text">
@@ -125,16 +126,16 @@
 {% endblock main %}
 
 {% block aside %}
-    <!--最新文章-->
-    {% include 'asides/recent-posts.html' %}
-    <!--归档-->
-    {% include 'asides/archives.html' %}
-    <!--分类-->
-    {% include 'asides/category.html' %}
+    <!--&lt;!&ndash;最新文章&ndash;&gt;-->
+    <!--{% include 'asides/recent-posts.html' %}-->
+    <!--&lt;!&ndash;归档&ndash;&gt;-->
+    <!--{% include 'asides/archives.html' %}-->
+    <!--&lt;!&ndash;分类&ndash;&gt;-->
+    <!--{% include 'asides/category.html' %}-->
     <!--标签-->
     {% include 'asides/tag.html' %}
-    <!--RSS-->
-    {% include 'asides/rss.html' %}
+    <!--&lt;!&ndash;RSS&ndash;&gt;-->
+    <!--{% include 'asides/rss.html' %}-->
 {% endblock aside %}
 
 

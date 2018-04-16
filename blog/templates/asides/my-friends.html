@@ -1,0 +1,24 @@
+{% load staticfiles %}
+{% load blog_tags %}
+{% load friend_tags %}
+
+{% block category%}
+    <div class="widget-div">
+        <div class="widget-title"><h5 >我的关注</h5></div>
+        <div class="widget-content user-content">
+            {% get_friends user as user_list %}
+            <ul class="portrait-ul">
+                {% for user in user_list %}
+                <li class="portrait-li">
+                    <div class="portrait-div">
+                        <img class="recommand-portrait" src="{{user.image}}">
+                        <p class="portrait-username"><a href="{{ user.get_absolute_url }}">{{ user }}</a></p>
+                    </div>
+                </li>
+                {% empty %}
+                <p class="no-content">暂无关注！</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock category %}

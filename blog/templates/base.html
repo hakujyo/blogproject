@@ -30,13 +30,13 @@
 <div class="container">
     <header id="site-header">
         <div class="row head">
-            <div class="col-md-4 col-sm-5 col-xs-8">
+            <div class="col-md-6 col-sm-5 col-xs-8">
                 <div class="logo">
                     <h1><a href="{% url 'blog:index' %}"><b>Yao's</b> Blog System</a></h1>
                 </div>
                 <div class="islogin">
                     {% if user.is_authenticated %}
-                        <p>你已登录，欢迎你：<a href="#">{{ user.username }}</a>
+                        <p>你已登录，欢迎你：<a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
                             <button class="btn btn-default" id="mybutton"><a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a></button>
                             <button class="btn btn-default" id="mybutton"><a href="{% url 'password_change' %}?next={{ request.path }}">修改密码</a></button>
                         </p>
