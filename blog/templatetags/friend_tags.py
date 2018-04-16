@@ -53,12 +53,20 @@ def is_friend(user, author):
 def get_hot_users():
     pass
 
+
+# class recommandTuple:
+#     def __init__(self, userA, userB, similarity):
+#         self.userA = userA
+#         self.userB = userB
+#         self.similarity = similarity
+#
+#     def __repr__(self):
+#         return repr(( self.userA.username,  self.userB.username, self.similarity))
+
 @register.simple_tag
 def get_similarity_of_user(userA, userB):
     dot_product = 0
     hobbyA_Value = 0
-    # print(userA.hobbies.all())
-    # print(userB)
     for hobby in userA.hobbies.all():
         try:
             userB.hobbies.get(name=hobby.name)
@@ -68,24 +76,23 @@ def get_similarity_of_user(userA, userB):
         hobbyA_Value=hobbyA_Value+1
     hobbyB_Value=userB.hobbies.count()
     abs_value_product=math.sqrt(hobbyA_Value*hobbyB_Value)
-    # print(abs_value_product)
-    # print(userA, userB, dot_product)
     if abs_value_product==0:
         return (userA, userB, 0)
     else:
         return (userA, userB, dot_product*1.0/abs_value_product)
 
+
 @register.simple_tag
 def get_recommand_users(user):
     users = User.objects.all()
-    user_tuples=[]
+    user_tuples = []
     for userB in users:
-        print(userB)
         if user != userB:
             if not is_friend(user, userB):
                 temp = get_similarity_of_user(user, userB)
                 user_tuples.append(temp)
-    sorted(user_tuples, key=lambda x:x[2], reverse=True)
+    user_tuples = sorted(user_tuples, key=lambda x: x[2], reverse=True)
+    print(user_tuples)
     recommand_users = []
     for user_tuple in user_tuples[:6]:
         recommand_users.append(user_tuple[1])

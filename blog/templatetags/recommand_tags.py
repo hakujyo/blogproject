@@ -32,11 +32,12 @@ def get_recommand_posts(post):
     post_tuples=[]
     for postB in posts:
         if post != postB:
+            print(postB)
             temp = get_similarity_of_post(post, postB)
             post_tuples.append(temp)
-    sorted(post_tuples, key=lambda x:x[2], reverse=True)
+    post_tuples = sorted(post_tuples, key=lambda x:x[2], reverse=True)
     recommand_posts=[]
+    print(post_tuples)
     for user_tuple in post_tuples[:6]:
         recommand_posts.append(user_tuple[1])
-    return recommand_posts
     return recommand_posts

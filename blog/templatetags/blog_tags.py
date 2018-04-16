@@ -26,7 +26,7 @@ def archives():
 
 @register.simple_tag
 def get_categories():
-    return Category.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
+    return Category.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0).order_by('-id')
 
 @register.simple_tag
 def get_post_of_category(cate):
