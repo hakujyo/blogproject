@@ -56,6 +56,8 @@
     <!--{% include 'asides/recent-posts.html' %}-->
     <!--&lt;!&ndash;分类&ndash;&gt;-->
     <!--{% include 'asides/category.html' %}-->
+    <!--归档-->
+    {% include 'asides/archives.html' %}
     {% if user.is_authenticated %}
         {% ifequal user.pk author.pk %}
             <!--我的关注-->

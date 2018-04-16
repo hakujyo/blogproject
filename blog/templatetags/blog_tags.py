@@ -18,8 +18,8 @@ def get_recent_user_posts(user, num=5):
     return Post.objects.filter(author=user).order_by('-created_time')[:num]
 
 @register.simple_tag
-def archives():
-    return Post.objects.dates('created_time', 'month', order='DESC')
+def archives(author):
+    return Post.objects.filter(author=author).dates('created_time', 'month', order='DESC')
 
 @register.simple_tag
 def get_categories():

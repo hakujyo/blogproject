@@ -82,8 +82,9 @@ class ArchivesView(ListView):
     def get_queryset(self):
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
+        auth = self.kwargs.get('pk')
         return super(ArchivesView, self).get_queryset().filter(created_time__year=year,
-                                    created_time__month=month
+                                    created_time__month=month, author=auth
                                     )
 
 # def archives(request, year, month):
