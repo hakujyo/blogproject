@@ -58,13 +58,11 @@ def add_friend(request, pk):
             user.friends.add(author)
             return redirect(author)
         else:
-            # 使用 post.comment_set.all() 反向查询全部评论。
             post_list = Post.objects.filter(author=author)
             context = {'post_list': post_list,
                        'author':author,
                        }
             return render(request, 'user-blog.html', context=context)
-    # 不是 post 请求，说明用户没有提交数据，重定向到文章详情页。
     return redirect(author)
 
 def delete_friend(request, pk):
@@ -76,11 +74,9 @@ def delete_friend(request, pk):
             user.friends.remove(author)
             return redirect(author)
         else:
-            # 使用 post.comment_set.all() 反向查询全部评论。
             post_list = Post.objects.filter(author=author)
             context = {'post_list': post_list,
                        'author':author,
                        }
             return render(request, 'user-blog.html', context=context)
-    # 不是 post 请求，说明用户没有提交数据，重定向到文章详情页。
     return redirect(author)

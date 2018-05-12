@@ -46,7 +46,7 @@ def likes_change(request):
         detail = LikesDetail(likes = l, user = user, is_like = False)
     liked = detail.is_like
 
-    #判断是否赞过，或者取消赞
+    #判断是否赞过，否则取消赞
     if liked == direct:
         data['status'] = 403
         data['message'] = u'Invalid operation'
