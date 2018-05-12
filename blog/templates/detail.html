@@ -131,6 +131,10 @@
     {% include 'asides/tag.html' %}
     <!--推荐阅读-->
     {% include 'asides/recommand-post.html' %}
+    <!--你可能感兴趣的文章-->
+    {% if user.is_authenticated %}
+            {% include 'asides/recommand-post-based-on-user.html' %}
+    {% endif %}
 {% endblock aside %}
 
 

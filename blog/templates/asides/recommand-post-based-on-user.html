@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% load blog_tags %}
+{% load friend_tags %}
+{% load recommand_tags %}
+
+{% block recent-posts%}
+    <div class="widget widget-recent-posts">
+        <div class="widget-title"><h5 >你可能感兴趣的文章</h5></div>
+        <div class="widget-content">
+            {% get_recommand_posts_based_on_user user as post_list %}
+            <ul>
+                {% for post in post_list %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </li>
+                {% empty %}
+                暂无文章！
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock recent-posts %}
