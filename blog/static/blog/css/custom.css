@@ -460,10 +460,12 @@ img {
 .rss {
     font-size: 21px;
     margin-top: 30px;
+    background: #5251575e;
+    font-weight: bold;
 }
 
 .rss a {
-    color: #444;
+    color: #FFFFFF;
 }
 
 /**

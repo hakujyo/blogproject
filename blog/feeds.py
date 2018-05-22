@@ -1,12 +1,11 @@
 from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView
 
 from .models import Post
 from users.models import User
 
 
-class AllPostsRssFeed(Feed, ListView):
+class AllPostsRssFeed(Feed):
     def get_object(self, request, pk):
         return User.objects.get(pk=pk)
 
